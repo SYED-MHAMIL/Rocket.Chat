@@ -35,11 +35,9 @@ const usePersistedCollapse= (attachmentId : string | undefined , initialCollapse
 		useEffect(() => {
 			if (attachmentId) {
 				const stored = sessionStorage.getItem(`persistant-attachment-${attachmentId}`);
-				if (stored !== null) {
-					setCollapsed(stored === 'true');
-				}
+				setCollapsed(stored === null ? initialCollapsed : stored === 'true');
 			}
-		}, [attachmentId]);
+		}, [attachmentId, initialCollapsed]);
 		
 		return [collapsed,toogleCollapsed] as const
 
@@ -49,7 +47,7 @@ const usePersistedCollapse= (attachmentId : string | undefined , initialCollapse
 
 export const useCollapse = (attachmentId : string | undefined,attachmentCollapsed?: boolean): [collapsed: boolean, node: ReactNode] => {
 	
-	 console.log('reset state')
+	//  console.log('reset state')
 	const collapseByDefault = useAttachmentIsCollapsedByDefault() 
 	const initialCollapsed = collapseByDefault || attachmentCollapsed 
 	const [collapsed, toogleCollapsed] = usePersistedCollapse(attachmentId,initialCollapsed) ||useToggle(initialCollapsed);

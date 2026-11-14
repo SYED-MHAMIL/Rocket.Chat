@@ -8,11 +8,11 @@
 		"/dist"
 	],
 	"scripts": {
-		".:build:build": "tsc -p tsconfig.json",
+		".:build:build": "tspc -p tsconfig.json",
 		".:build:clean": "rimraf dist",
 		".:build:prepare": "ts-patch install && typia patch",
 		"build": "run-s .:build:prepare .:build:clean .:build:build",
-		"dev": "tsc --watch --preserveWatchOutput -p tsconfig.json",
+		"dev": "tspc --watch --preserveWatchOutput -p tsconfig.json",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
 		"test": "echo \"no tests\" && exit 1"

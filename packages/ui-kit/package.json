@@ -23,7 +23,7 @@
 	"scripts": {
 		".:build:clean": "rimraf dist",
 		".:build:prepare": "ts-patch install && typia patch",
-		".:build:tsc": "tsc -p tsconfig.build.json",
+		".:build:tsc": "tspc -p tsconfig.build.json",
 		"build": "run-s .:build:prepare .:build:clean .:build:tsc",
 		"lint": "eslint .",
 		"test": "jest",
